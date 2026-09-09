@@ -485,149 +485,134 @@
       transform: translateX(5px);
     }
 
-    /* --- Секция магазина --- */
-    .shop-section {
-      padding: 60px 0;
-      text-align: center;
+    /* ===== СЕКЦИЯ ДОНАТА ===== */
+    .donate-section {
+      padding: 60px 0 40px;
       border-top: 1px solid #1a2a4a;
+      border-bottom: 1px solid #1a2a4a;
       scroll-margin-top: 80px;
+      background: rgba(10, 20, 40, 0.3);
     }
 
-    .shop-section h2 {
+    .donate-section .section-title {
       font-size: 2.5rem;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 10px;
       color: #fff;
-      transition: all 0.3s ease;
     }
 
-    .shop-section h2:hover {
-      transform: scale(1.05);
-      text-shadow: 0 0 30px rgba(74, 144, 255, 0.3);
-    }
-
-    .shop-section h2 span {
+    .donate-section .section-title span {
       color: #4a90ff;
-      transition: all 0.3s ease;
     }
 
-    .shop-section h2:hover span {
-      color: #00ccff;
-    }
-
-    .shop-section p {
+    .donate-section .section-subtitle {
+      text-align: center;
       color: #8ab4f8;
       font-size: 1.1rem;
-      margin-bottom: 30px;
-      transition: all 0.3s ease;
-    }
-
-    .shop-section p:hover {
-      color: #b0d0ff;
-      transform: scale(1.02);
-    }
-
-    .shop-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
       margin-bottom: 40px;
     }
 
-    .shop-item {
+    .donate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .donate-card {
       background: rgba(15, 25, 50, 0.7);
-      padding: 30px 20px;
-      border-radius: 20px;
+      border-radius: 24px;
+      padding: 30px 20px 25px;
       border: 1px solid #1a2a4a;
       transition: all 0.4s ease;
-      cursor: pointer;
       text-align: center;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(2px);
     }
 
-    .shop-item::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(74, 144, 255, 0.05), transparent 70%);
-      opacity: 0;
-      transition: all 0.5s ease;
-    }
-
-    .shop-item:hover::before {
-      opacity: 1;
-    }
-
-    .shop-item:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 15px 50px rgba(74, 144, 255, 0.2);
+    .donate-card:hover {
+      transform: translateY(-10px);
       border-color: #4a90ff;
+      box-shadow: 0 15px 50px rgba(74, 144, 255, 0.15);
       background: rgba(20, 35, 70, 0.8);
     }
 
-    .shop-item .icon {
-      font-size: 3rem;
+    .donate-card .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
       display: block;
-      margin-bottom: 15px;
-      transition: all 0.4s ease;
-      position: relative;
     }
 
-    .shop-item:hover .icon {
-      transform: rotate(10deg) scale(1.2);
-    }
-
-    .shop-item h3 {
+    .donate-card h3 {
+      font-size: 1.4rem;
       color: #fff;
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      transition: all 0.3s ease;
-      position: relative;
+      margin-bottom: 6px;
     }
 
-    .shop-item:hover h3 {
-      color: #4a90ff;
+    .donate-card .card-desc {
+      color: #8ab4f8;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      min-height: 44px;
     }
 
-    .shop-item .price {
-      color: #00ccff;
-      font-size: 1.5rem;
+    .donate-card .card-price {
+      font-size: 1.8rem;
       font-weight: 700;
+      color: #00ccff;
       display: block;
-      margin: 10px 0;
-      transition: all 0.3s ease;
-      position: relative;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
     }
 
-    .shop-item:hover .price {
-      transform: scale(1.1);
-      color: #4a90ff;
+    .donate-card .card-price small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #8ab4f8;
     }
 
-    .shop-item .btn-buy {
+    .donate-card .btn-donate {
       display: inline-block;
       background: linear-gradient(135deg, #0044cc, #4a90ff);
       color: #fff;
-      padding: 10px 30px;
+      padding: 12px 40px;
       border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      font-weight: 700;
+      font-size: 1rem;
       border: none;
-      cursor: pointer;
-      margin-top: 10px;
-      position: relative;
+      cursor: default;
+      transition: all 0.3s ease;
+      opacity: 0.85;
+      letter-spacing: 0.5px;
     }
 
-    .shop-item .btn-buy:hover {
-      transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 5px 25px rgba(0, 68, 204, 0.4);
+    .donate-card .btn-donate:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 25px rgba(0, 68, 204, 0.3);
     }
 
-    .shop-item .btn-buy:active {
-      transform: scale(0.95);
+    .donate-card .badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      color: #0a0e17;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .donate-card .badge.hot {
+      background: linear-gradient(135deg, #e63946, #ff6b6b);
+      color: #fff;
+    }
+
+    .donate-card .badge.popular {
+      background: linear-gradient(135deg, #4a90ff, #00ccff);
+      color: #fff;
     }
 
     /* --- Подвал --- */
@@ -693,7 +678,7 @@
         font-size: 1.5rem;
       }
 
-      .shop-grid {
+      .donate-grid {
         grid-template-columns: 1fr;
       }
 
@@ -731,7 +716,7 @@
         <nav class="nav-menu">
           <ul>
             <li><a href="#home" class="active" data-key="navHome">Домашняя страница</a></li>
-            <li><a href="#shop" data-key="navShop">Магазин</a></li>
+            <li><a href="#donate" data-key="navDonate">Донат</a></li>
             <li><a href="#rules" data-key="navRules">Правила</a></li>
           </ul>
         </nav>
@@ -749,7 +734,7 @@
         <span>mc.</span>StepGrief.xyz
       </div>
       <br>
-      <a href="#shop" class="btn-primary" data-key="heroBtn">Присоединиться</a>
+      <a href="#donate" class="btn-primary" data-key="heroBtn">Присоединиться</a>
     </section>
 
     <!-- Секция "Дальше - Больше" -->
@@ -766,6 +751,49 @@
         <div class="info-item">
           <h3>🏆 <span data-key="info3Title">Топ</span></h3>
           <p data-key="info3Desc">Стань лучшим на сервере и пусть все тебе завидуют.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== СЕКЦИЯ ДОНАТА ===== -->
+    <section id="donate" class="donate-section">
+      <h2 class="section-title">💎 <span data-key="donateTitle">Донат</span></h2>
+      <p class="section-subtitle" data-key="donateSub">Привилегии и наборы для вашего персонажа</p>
+
+      <div class="donate-grid">
+        <!-- Карточка 1 -->
+        <div class="donate-card">
+          <span class="badge hot">🔥 Хит</span>
+          <span class="card-icon">👑</span>
+          <h3 data-key="donateCard1Title">VIP</h3>
+          <p class="card-desc" data-key="donateCard1Desc">Доступ к /fly, /kit vip, цветной ник</p>
+          <span class="card-price">499 ₽ <small>/ мес</small></span>
+          <span class="btn-donate" data-key="donateBtn">Купить</span>
+        </div>
+
+        <div class="donate-card">
+          <span class="badge popular">⭐ Популярное</span>
+          <span class="card-icon">⚡</span>
+          <h3 data-key="donateCard2Title">Premium</h3>
+          <p class="card-desc" data-key="donateCard2Desc">/fly, /kit premium, /feed, /heal, эксклюзивные эффекты</p>
+          <span class="card-price">999 ₽ <small>/ мес</small></span>
+          <span class="btn-donate" data-key="donateBtn">Купить</span>
+        </div>
+
+        <div class="donate-card">
+          <span class="card-icon">💎</span>
+          <h3 data-key="donateCard3Title">Deluxe</h3>
+          <p class="card-desc" data-key="donateCard3Desc">Всё из Premium + /nick, /kit deluxe, дополнительные слоты</p>
+          <span class="card-price">1699 ₽ <small>/ мес</small></span>
+          <span class="btn-donate" data-key="donateBtn">Купить</span>
+        </div>
+
+        <div class="donate-card">
+          <span class="card-icon">🌟</span>
+          <h3 data-key="donateCard4Title">Legend</h3>
+          <p class="card-desc" data-key="donateCard4Desc">Максимальные привилегии, /vanish, /god, уникальный префикс</p>
+          <span class="card-price">2999 ₽ <small>/ мес</small></span>
+          <span class="btn-donate" data-key="donateBtn">Купить</span>
         </div>
       </div>
     </section>
@@ -794,8 +822,6 @@
         </ul>
       </div>
     </section>
-      <a href="#" class="btn-primary" style="background: linear-gradient(135deg, #4a90ff, #00ccff);" data-key="allProducts">Все товары</a>
-    </section>
 
   </main>
 
@@ -814,7 +840,7 @@
       ru: {
         siteLabel: 'Official site',
         navHome: 'Домашняя страница',
-        navShop: 'Магазин',
+        navDonate: 'Донат',
         navRules: 'Правила',
         heroSubtitle: 'Майнкрафт сервер для лучших',
         heroBtn: 'Присоединиться',
@@ -838,23 +864,24 @@
         staffRule3: 'Оперативно реагируйте на запросы и жалобы.',
         staffRule4: 'Соблюдайте конфиденциальность данных.',
         staffRule5: 'Вносите предложения по улучшению сервера.',
-        shopTitle: 'Наш Магазин',
-        shopDesc: 'Приобретайте привилегии, наборы и косметику для вашего персонажа.',
-        product1Title: 'VIP Привилегия',
-        product1Desc: 'Доступ к эксклюзивным возможностям',
-        product2Title: 'Premium Набор',
-        product2Desc: 'Лучший набор для настоящих профи',
-        product3Title: 'Косметика',
-        product3Desc: 'Эффекты, частицы и скины',
-        buyBtn: 'Купить',
-        allProducts: 'Все товары',
         footerText: 'Все права защищены.',
-        footerServer: 'Сервер Minecraft'
+        footerServer: 'Сервер Minecraft',
+        donateTitle: 'Донат',
+        donateSub: 'Привилегии и наборы для вашего персонажа',
+        donateCard1Title: 'VIP',
+        donateCard1Desc: 'Доступ к /fly, /kit vip, цветной ник',
+        donateCard2Title: 'Premium',
+        donateCard2Desc: '/fly, /kit premium, /feed, /heal, эксклюзивные эффекты',
+        donateCard3Title: 'Deluxe',
+        donateCard3Desc: 'Всё из Premium + /nick, /kit deluxe, дополнительные слоты',
+        donateCard4Title: 'Legend',
+        donateCard4Desc: 'Максимальные привилегии, /vanish, /god, уникальный префикс',
+        donateBtn: 'Купить'
       },
       en: {
         siteLabel: 'Official site',
         navHome: 'Home',
-        navShop: 'Shop',
+        navDonate: 'Donate',
         navRules: 'Rules',
         heroSubtitle: 'Minecraft server for the best',
         heroBtn: 'Join',
@@ -872,24 +899,25 @@
         rule2: 'Cheats and any modifications that give advantage are prohibited.',
         rule3: 'Do not use bugs and errors to your advantage.',
         rule4: 'Do not spam in chat or flood.',
-        rule5: 'Follow PvP rules and don\'t grief.',
+        rule5: 'Follow PvP rules and don\'t grieve.',
         staffRule1: 'Be polite and professional with players.',
         staffRule2: 'Do not abuse your privileges.',
         staffRule3: 'Respond promptly to requests and complaints.',
         staffRule4: 'Maintain data confidentiality.',
         staffRule5: 'Make suggestions for server improvement.',
-        shopTitle: 'Our Shop',
-        shopDesc: 'Purchase privileges, kits and cosmetics for your character.',
-        product1Title: 'VIP Privilege',
-        product1Desc: 'Access to exclusive features',
-        product2Title: 'Premium Kit',
-        product2Desc: 'The best kit for true pros',
-        product3Title: 'Cosmetics',
-        product3Desc: 'Effects, particles and skins',
-        buyBtn: 'Buy',
-        allProducts: 'All products',
         footerText: 'All rights reserved.',
-        footerServer: 'Minecraft Server'
+        footerServer: 'Minecraft Server',
+        donateTitle: 'Donate',
+        donateSub: 'Privileges and kits for your character',
+        donateCard1Title: 'VIP',
+        donateCard1Desc: 'Access to /fly, /kit vip, colored nickname',
+        donateCard2Title: 'Premium',
+        donateCard2Desc: '/fly, /kit premium, /feed, /heal, exclusive effects',
+        donateCard3Title: 'Deluxe',
+        donateCard3Desc: 'All from Premium + /nick, /kit deluxe, extra slots',
+        donateCard4Title: 'Legend',
+        donateCard4Desc: 'Maximum privileges, /vanish, /god, unique prefix',
+        donateBtn: 'Buy'
       }
     };
 
@@ -923,8 +951,8 @@
       navLinks.forEach(link => {
         const sectionId = link.getAttribute('href');
         if (sectionId === '#home') {
-          const shopOffset = document.getElementById('shop')?.offsetTop || 0;
-          if (scrollPosition < shopOffset - 150) {
+          const donateOffset = document.getElementById('donate')?.offsetTop || 0;
+          if (scrollPosition < donateOffset - 150) {
             link.classList.add('active');
           } else {
             link.classList.remove('active');
