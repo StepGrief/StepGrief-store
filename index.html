@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StepGrief | Official Store</title>
+  
+  <!-- Favicon (иконка сайта) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>">
+  
+  <style>
+    /* --- Общие стили и сброс --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0a0e17;
+      color: #e0e8f0;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(circle at 10% 20%, rgba(20, 60, 120, 0.4) 0%, #0a0e17 90%);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* --- Шапка сайта --- */
+    .header {
+      padding: 20px 0;
+      border-bottom: 1px solid #1a2a4a;
+      background: rgba(10, 14, 23, 0.85);
+      backdrop-filter: blur(5px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .header:hover {
+      background: rgba(10, 14, 23, 0.95);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #4a90ff, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(0, 100, 255, 0.2);
+      letter-spacing: -0.5px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #4a90ff, #00ccff);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 900;
+      -webkit-text-fill-color: #fff;
+      box-shadow: 0 0 30px rgba(74, 144, 255, 0.3);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logo-icon:hover {
+      transform: rotate(-10deg) scale(1.1);
+      box-shadow: 0 0 50px rgba(74, 144, 255, 0.5);
+    }
+
+    .logo small {
+      font-size: 1rem;
+      font-weight: 400;
+      -webkit-text-fill-color: #8ab4f8;
+      background: none;
+      margin-left: 5px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* --- Переключатель языков --- */
+    .language-switcher {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 25, 50, 0.6);
+      padding: 6px 12px;
+      border-radius: 50px;
+      border: 1px solid #1a2a4a;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .language-switcher:hover {
+      border-color: #4a90ff;
+      box-shadow: 0 0 20px rgba(74, 144, 255, 0.2);
+    }
+
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      color: #8ab4f8;
+    }
+
+    .lang-option:hover {
+      transform: scale(1.05);
+    }
+
+    .lang-option.active {
+      background: linear-gradient(135deg, #4a90ff, #00ccff);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(74, 144, 255, 0.3);
+    }
+
+    .lang-option .flag {
+      font-size: 1.2rem;
+    }
+
+    /* --- Навигация --- */
+    .nav-menu ul {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-menu a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #b0c8e0;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #4a90ff, #00ccff);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-menu a:hover {
+      color: #4a90ff;
+      transform: translateY(-2px);
+      text-shadow: 0 0 20px rgba(74, 144, 255, 0.3);
+    }
+
+    .nav-menu .active {
+      color: #4a90ff;
+      border-bottom-color: #4a90ff;
+    }
+
+    .nav-menu .active::after {
+      width: 100%;
+    }
+
+    /* --- Секция Hero --- */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, #4a90ff 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      color: #4a90ff;
+      font-weight: 300;
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px rgba(74, 144, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .hero .subtitle:hover {
+      color: #00ccff;
+      text-shadow: 0 0 40px rgba(74, 144, 255, 0.4);
+      transform: scale(1.05);
+    }
+
+    .hero .ip-address {
+      display: inline-block;
+      background: #111b2e;
+      padding: 12px 40px;
+      border-radius: 50px;
+      border: 1px solid #4a90ff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+      box-shadow: 0 0 40px rgba(74, 144, 255, 0.15);
+      margin: 15px 0 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hero .ip-address:hover {
+      box-shadow: 0 0 60px rgba(74, 144, 255, 0.4);
+      transform: scale(1.05) translateY(-3px);
+      border-color: #00ccff;
+      background: #162040;
+    }
+
+    .hero .ip-address span {
+      color: #00ccff;
+      transition: all 0.3s ease;
+    }
+
+    .hero .ip-address:hover span {
+      color: #4a90ff;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #0044cc, #4a90ff);
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 45px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 30px rgba(0, 68, 204, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 50px rgba(0, 68, 204, 0.5);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    /* --- Секция "Дальше - Больше" --- */
+    .section-info {
+      padding: 60px 0;
+      border-top: 1px solid #1a2a4a;
+      border-bottom: 1px solid #1a2a4a;
+      background: rgba(10, 20, 40, 0.5);
+      margin: 20px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .info-item {
+      padding: 30px 20px;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      background: rgba(15, 25, 50, 0.3);
+      cursor: pointer;
+    }
+
+    .info-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      background: rgba(15, 25, 50, 0.6);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(74, 144, 255, 0.2);
+    }
+
+    .info-item h3 {
+      font-size: 1.8rem;
+      color: #4a90ff;
+      margin-bottom: 8px;
+      font-weight: 800;
+      transition: all 0.3s ease;
+    }
+
+    .info-item:hover h3 {
+      color: #00ccff;
+      transform: scale(1.1);
+    }
+
+    .info-item p {
+      color: #8ab4f8;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .info-item:hover p {
+      color: #b0d0ff;
+    }
+
+    /* --- Секция правил --- */
+    .rules-section {
+      padding: 60px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      scroll-margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .rules-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    .rules-box {
+      background: rgba(15, 25, 50, 0.7);
+      padding: 30px;
+      border-radius: 20px;
+      border-left: 4px solid #4a90ff;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .rules-box:hover {
+      transform: translateX(10px) translateY(-5px);
+      box-shadow: 0 10px 40px rgba(74, 144, 255, 0.2);
+      border-left-color: #00ccff;
+      background: rgba(20, 35, 70, 0.8);
+    }
+
+    .rules-box h2 {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .rules-box:hover h2 {
+      transform: translateX(5px);
+    }
+
+    .rules-box h2 span {
+      color: #4a90ff;
+      transition: all 0.3s ease;
+    }
+
+    .rules-box:hover h2 span {
+      color: #00ccff;
+    }
+
+    .rules-box ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #1a2a4a;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .rules-box ul li:hover {
+      padding-left: 10px;
+      color: #fff;
+    }
+
+    .rules-box ul li:last-child {
+      border-bottom: none;
+    }
+
+    .rules-box ul li::before {
+      content: "▸";
+      color: #4a90ff;
+      font-weight: 900;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .rules-box ul li:hover::before {
+      color: #00ccff;
+      transform: translateX(5px);
+    }
+
+    /* --- Секция магазина --- */
+    .shop-section {
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid #1a2a4a;
+      scroll-margin-top: 80px;
+    }
+
+    .shop-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .shop-section h2:hover {
+      transform: scale(1.05);
+      text-shadow: 0 0 30px rgba(74, 144, 255, 0.3);
+    }
+
+    .shop-section h2 span {
+      color: #4a90ff;
+      transition: all 0.3s ease;
+    }
+
+    .shop-section h2:hover span {
+      color: #00ccff;
+    }
+
+    .shop-section p {
+      color: #8ab4f8;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .shop-section p:hover {
+      color: #b0d0ff;
+      transform: scale(1.02);
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .shop-item {
+      background: rgba(15, 25, 50, 0.7);
+      padding: 30px 20px;
+      border-radius: 20px;
+      border: 1px solid #1a2a4a;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shop-item::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(74, 144, 255, 0.05), transparent 70%);
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .shop-item:hover::before {
+      opacity: 1;
+    }
+
+    .shop-item:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 50px rgba(74, 144, 255, 0.2);
+      border-color: #4a90ff;
+      background: rgba(20, 35, 70, 0.8);
+    }
+
+    .shop-item .icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 15px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .shop-item:hover .icon {
+      transform: rotate(10deg) scale(1.2);
+    }
+
+    .shop-item h3 {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .shop-item:hover h3 {
+      color: #4a90ff;
+    }
+
+    .shop-item .price {
+      color: #00ccff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: block;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .shop-item:hover .price {
+      transform: scale(1.1);
+      color: #4a90ff;
+    }
+
+    .shop-item .btn-buy {
+      display: inline-block;
+      background: linear-gradient(135deg, #0044cc, #4a90ff);
+      color: #fff;
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .shop-item .btn-buy:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 5px 25px rgba(0, 68, 204, 0.4);
+    }
+
+    .shop-item .btn-buy:active {
+      transform: scale(0.95);
+    }
+
+    /* --- Подвал --- */
+    .footer {
+      margin-top: auto;
+      padding: 30px 0;
+      border-top: 1px solid #1a2a4a;
+      text-align: center;
+      color: #6a8aaa;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer:hover {
+      background: rgba(10, 14, 23, 0.5);
+    }
+
+    .footer strong {
+      color: #4a90ff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .footer strong:hover {
+      color: #00ccff;
+      text-shadow: 0 0 20px rgba(74, 144, 255, 0.3);
+    }
+
+    /* --- Адаптивность --- */
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-menu ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero .ip-address {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+      }
+
+      .rules-section {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+      }
+
+      .shop-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .language-switcher {
+        padding: 4px 10px;
+      }
+
+      .lang-option {
+        padding: 3px 8px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-icon">SG</span>
+        StepGrief <small id="siteLabel">Official site</small>
+      </div>
+      <div class="header-right">
+        <!-- Переключатель языков -->
+        <div class="language-switcher" id="langSwitcher">
+          <button class="lang-option active" data-lang="ru" onclick="switchLanguage('ru')">
+            <span class="flag">🇷🇺</span> RU
+          </button>
+          <button class="lang-option" data-lang="en" onclick="switchLanguage('en')">
+            <span class="flag">🇬🇧</span> EN
+          </button>
+        </div>
+        <!-- Навигация -->
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="#home" class="active" data-key="navHome">Домашняя страница</a></li>
+            <li><a href="#shop" data-key="navShop">Магазин</a></li>
+            <li><a href="#rules" data-key="navRules">Правила</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Главный экран -->
+    <section id="home" class="hero">
+      <h1>StepGrief</h1>
+      <div class="subtitle" data-key="heroSubtitle">Майнкрафт сервер для лучших</div>
+      <div class="ip-address">
+        <span>mc.</span>StepGrief.xyz
+      </div>
+      <br>
+      <a href="#shop" class="btn-primary" data-key="heroBtn">Присоединиться</a>
+    </section>
+
+    <!-- Секция "Дальше - Больше" -->
+    <section class="section-info">
+      <div class="info-grid">
+        <div class="info-item">
+          <h3>⚡ <span data-key="info1Title">Дальше</span></h3>
+          <p data-key="info1Desc">Вас ждёт проработанная экономика, отзывчивое комьюнити и добрые администраторы.</p>
+        </div>
+        <div class="info-item">
+          <h3>🔥 <span data-key="info2Title">Больше</span></h3>
+          <p data-key="info2Desc">Ежедневные ивенты, розыгрыши и активное комьюнити.</p>
+        </div>
+        <div class="info-item">
+          <h3>🏆 <span data-key="info3Title">Топ</span></h3>
+          <p data-key="info3Desc">Стань лучшим на сервере и пусть все тебе завидуют.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция Правила -->
+    <section id="rules" class="rules-section">
+      <div class="rules-box">
+        <h2>📜 <span data-key="rulesTitle1">Правила</span> <span data-key="rulesServer">сервера</span></h2>
+        <ul>
+          <li data-key="rule1">Уважайте других игроков и администрацию.</li>
+          <li data-key="rule2">Запрещены читы и любые модификации, дающие преимущество.</li>
+          <li data-key="rule3">Не используйте баги и ошибки в свою пользу.</li>
+          <li data-key="rule4">Не спамьте в чате и не флудите.</li>
+          <li data-key="rule5">Соблюдайте правила PvP и не гриферьте.</li>
+        </ul>
+      </div>
+
+      <div class="rules-box">
+        <h2>👥 <span data-key="rulesTitle2">Правила</span> <span data-key="rulesStaff">Персонала</span></h2>
+        <ul>
+          <li data-key="staffRule1">Будьте вежливы и профессиональны с игроками.</li>
+          <li data-key="staffRule2">Не злоупотребляйте своими привилегиями.</li>
+          <li data-key="staffRule3">Оперативно реагируйте на запросы и жалобы.</li>
+          <li data-key="staffRule4">Соблюдайте конфиденциальность данных.</li>
+          <li data-key="staffRule5">Вносите предложения по улучшению сервера.</li>
+        </ul>
+      </div>
+    </section>
+      <a href="#" class="btn-primary" style="background: linear-gradient(135deg, #4a90ff, #00ccff);" data-key="allProducts">Все товары</a>
+    </section>
+
+  </main>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <div class="container">
+      &copy; 2026 <strong>StepGrief</strong>. <span data-key="footerText">Все права защищены.</span> <br>
+      <span data-key="footerServer">Сервер Minecraft</span>: <strong>mc.StepGrief.xyz</strong>
+    </div>
+  </footer>
+
+  <!-- Скрипты -->
+  <script>
+    // --- Переключение языков ---
+    const translations = {
+      ru: {
+        siteLabel: 'Official site',
+        navHome: 'Домашняя страница',
+        navShop: 'Магазин',
+        navRules: 'Правила',
+        heroSubtitle: 'Майнкрафт сервер для лучших',
+        heroBtn: 'Присоединиться',
+        info1Title: 'Дальше',
+        info1Desc: 'Вас ждёт проработанная экономика, отзывчивое комьюнити и добрые администраторы.',
+        info2Title: 'Больше',
+        info2Desc: 'Ежедневные ивенты, розыгрыши и активное комьюнити.',
+        info3Title: 'Топ',
+        info3Desc: 'Стань лучшим на сервере и пусть все тебе завидуют.',
+        rulesTitle1: 'Правила',
+        rulesServer: 'сервера',
+        rulesTitle2: 'Правила',
+        rulesStaff: 'Персонала',
+        rule1: 'Уважайте других игроков и администрацию.',
+        rule2: 'Запрещены читы и любые модификации, дающие преимущество.',
+        rule3: 'Не используйте баги и ошибки в свою пользу.',
+        rule4: 'Не спамьте в чате и не флудите.',
+        rule5: 'Соблюдайте правила PvP и не гриферьте.',
+        staffRule1: 'Будьте вежливы и профессиональны с игроками.',
+        staffRule2: 'Не злоупотребляйте своими привилегиями.',
+        staffRule3: 'Оперативно реагируйте на запросы и жалобы.',
+        staffRule4: 'Соблюдайте конфиденциальность данных.',
+        staffRule5: 'Вносите предложения по улучшению сервера.',
+        shopTitle: 'Наш Магазин',
+        shopDesc: 'Приобретайте привилегии, наборы и косметику для вашего персонажа.',
+        product1Title: 'VIP Привилегия',
+        product1Desc: 'Доступ к эксклюзивным возможностям',
+        product2Title: 'Premium Набор',
+        product2Desc: 'Лучший набор для настоящих профи',
+        product3Title: 'Косметика',
+        product3Desc: 'Эффекты, частицы и скины',
+        buyBtn: 'Купить',
+        allProducts: 'Все товары',
+        footerText: 'Все права защищены.',
+        footerServer: 'Сервер Minecraft'
+      },
+      en: {
+        siteLabel: 'Official site',
+        navHome: 'Home',
+        navShop: 'Shop',
+        navRules: 'Rules',
+        heroSubtitle: 'Minecraft server for the best',
+        heroBtn: 'Join',
+        info1Title: 'Further',
+        info1Desc: 'You\'ll find a well-developed economy, responsive community and kind admins.',
+        info2Title: 'More',
+        info2Desc: 'Daily events, giveaways and active community.',
+        info3Title: 'Top',
+        info3Desc: 'Become the best on the server and make everyone envy you.',
+        rulesTitle1: 'Server',
+        rulesServer: 'Rules',
+        rulesTitle2: 'Staff',
+        rulesStaff: 'Rules',
+        rule1: 'Respect other players and administration.',
+        rule2: 'Cheats and any modifications that give advantage are prohibited.',
+        rule3: 'Do not use bugs and errors to your advantage.',
+        rule4: 'Do not spam in chat or flood.',
+        rule5: 'Follow PvP rules and don\'t grief.',
+        staffRule1: 'Be polite and professional with players.',
+        staffRule2: 'Do not abuse your privileges.',
+        staffRule3: 'Respond promptly to requests and complaints.',
+        staffRule4: 'Maintain data confidentiality.',
+        staffRule5: 'Make suggestions for server improvement.',
+        shopTitle: 'Our Shop',
+        shopDesc: 'Purchase privileges, kits and cosmetics for your character.',
+        product1Title: 'VIP Privilege',
+        product1Desc: 'Access to exclusive features',
+        product2Title: 'Premium Kit',
+        product2Desc: 'The best kit for true pros',
+        product3Title: 'Cosmetics',
+        product3Desc: 'Effects, particles and skins',
+        buyBtn: 'Buy',
+        allProducts: 'All products',
+        footerText: 'All rights reserved.',
+        footerServer: 'Minecraft Server'
+      }
+    };
+
+    let currentLang = 'ru';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      const t = translations[lang];
+      
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.dataset.key;
+        if (t[key] !== undefined) {
+          el.textContent = t[key];
+        }
+      });
+
+      localStorage.setItem('lang', lang);
+    }
+
+    // --- Подсветка активного пункта меню ---
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    function updateActiveLink() {
+      const scrollPosition = window.scrollY + 100;
+      
+      navLinks.forEach(link => {
+        const sectionId = link.getAttribute('href');
+        if (sectionId === '#home') {
+          const shopOffset = document.getElementById('shop')?.offsetTop || 0;
+          if (scrollPosition < shopOffset - 150) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+          return;
+        }
+        
+        const targetSection = document.querySelector(sectionId);
+        if (targetSection) {
+          const sectionTop = targetSection.offsetTop;
+          const sectionBottom = sectionTop + targetSection.offsetHeight;
+          
+          if (scrollPosition >= sectionTop - 50 && scrollPosition < sectionBottom - 50) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+    }
+
+    // --- Загрузка сохраненного языка ---
+    function loadSavedLanguage() {
+      const savedLang = localStorage.getItem('lang') || 'ru';
+      switchLanguage(savedLang);
+    }
+
+    // --- Инициализация ---
+    window.addEventListener('scroll', updateActiveLink);
+    window.addEventListener('load', () => {
+      updateActiveLink();
+      loadSavedLanguage();
+    });
+  </script>
+
+</body>
+</html>
