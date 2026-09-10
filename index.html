@@ -600,6 +600,27 @@
       transform: scale(1.2) rotate(5deg);
     }
 
+    /* Картинка внутри карточки доната */
+    .donate-card .card-image {
+      display: block;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      border-radius: 16px;
+      border: 1px solid #1a2a4a;
+      box-shadow: 0 0 25px rgba(74, 144, 255, 0.25);
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .donate-card:hover .card-image {
+      transform: scale(1.08) rotate(3deg);
+      box-shadow: 0 0 45px rgba(74, 144, 255, 0.6);
+      border-color: #4a90ff;
+    }
+
     .donate-card h3 {
       font-size: 1.3rem;
       color: #fff;
@@ -657,6 +678,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       animation: pulse 2s ease-in-out infinite;
+      z-index: 2;
     }
 
     @keyframes pulse {
@@ -947,26 +969,23 @@
       <div class="donate-grid" id="donateGrid">
         <div class="donate-card" data-category="privileges">
           <span class="badge hot">🔥 Хит</span>
-          <span class="card-icon">👑</span>
-          <h3 data-key="donateCard1Title">VIP</h3>
-          <p class="card-desc" data-key="donateCard1Desc">/fly, /kit vip, цветной ник в табе</p>
-          <span class="card-price">499 ₽ <small>/ мес</small></span>
+          <img src="Tiger.jpg" alt="Tiger" class="card-image">
+          <h3 data-key="donateCard1Title">Tiger</h3>
+          <span class="card-price">100₽</small></span>
         </div>
 
         <div class="donate-card" data-category="privileges">
           <span class="badge popular">⭐ Популярное</span>
-          <span class="card-icon">⚡</span>
-          <h3 data-key="donateCard2Title">Premium</h3>
-          <p class="card-desc" data-key="donateCard2Desc">/fly, /kit premium, /feed, /heal, эффекты</p>
-          <span class="card-price">999 ₽ <small>/ мес</small></span>
+          <img src="Bunny.jpg" alt="Bunny" class="card-image">
+          <h3 data-key="donateCard2Title">Bunny</h3>
+          <span class="card-price">150₽</small></span>
         </div>
 
         <div class="donate-card" data-category="privileges">
           <span class="badge best">🏆 Лучшее</span>
-          <span class="card-icon">💎</span>
-          <h3 data-key="donateCard3Title">Deluxe</h3>
-          <p class="card-desc" data-key="donateCard3Desc">Всё из Premium + /nick, /kit deluxe, слоты</p>
-          <span class="card-price">1699 ₽ <small>/ мес</small></span>
+           <img src="Rabbit.jpg" alt="Rabbit" class="card-image">
+          <h3 data-key="donateCard3Title">Rabbit</h3>
+          <span class="card-price">200₽</small></span>
         </div>
 
         <div class="donate-card" data-category="privileges">
@@ -1117,12 +1136,11 @@
         tabPrivileges: 'Привилегии',
         tabKits: 'Наборы',
         tabServices: 'Услуги',
-        donateCard1Title: 'VIP',
-        donateCard1Desc: '/fly, /kit vip, цветной ник в табе',
-        donateCard2Title: 'Premium',
-        donateCard2Desc: '/fly, /kit premium, /feed, /heal, эффекты',
-        donateCard3Title: 'Deluxe',
-        donateCard3Desc: 'Всё из Premium + /nick, /kit deluxe, слоты',
+        donateCard1Title: 'Tiger',
+        donateCard2Title: 'Bunny',
+        donateCard2Desc: '/fly, /kit Bunny, /feed, /heal, эффекты',
+        donateCard3Title: 'Rabbit',
+        donateCard3Desc: 'Всё из Bunny + /nick, /kit Rabbit, слоты',
         donateCard4Title: 'Legend',
         donateCard4Desc: '/vanish, /god, уникальный префикс, всё включено',
         donateCard5Title: 'Стартовый набор',
@@ -1175,12 +1193,12 @@
         tabPrivileges: 'Privileges',
         tabKits: 'Kits',
         tabServices: 'Services',
-        donateCard1Title: 'VIP',
-        donateCard1Desc: '/fly, /kit vip, colored nickname in tab',
-        donateCard2Title: 'Premium',
-        donateCard2Desc: '/fly, /kit premium, /feed, /heal, effects',
-        donateCard3Title: 'Deluxe',
-        donateCard3Desc: 'All from Premium + /nick, /kit deluxe, slots',
+        donateCard1Title: 'Tiger',
+        donateCard1Desc: '/fly, /kit Tiger, colored nickname in tab',
+        donateCard2Title: 'Bunny',
+        donateCard2Desc: '/fly, /kit Bunny, /feed, /heal, effects',
+        donateCard3Title: 'Rabbit',
+        donateCard3Desc: 'All from Bunny + /nick, /kit Rabbit, slots',
         donateCard4Title: 'Legend',
         donateCard4Desc: '/vanish, /god, unique prefix, everything included',
         donateCard5Title: 'Starter Kit',
